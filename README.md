@@ -87,4 +87,4 @@ https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_
 
 ### 提交说明
 1.  按照 https://github.com/RoboMaster/IntelligentUAVChampionshipBase 中的相关说明将评分节点打包成docker镜像的模式；
-2.  将doker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式并上传.
+2.  将doccker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式并上传.

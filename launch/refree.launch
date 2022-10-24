@@ -1,0 +1,15 @@
+<launch>
+    <arg name="output_path_base" default=""/>
+    <arg name="team" default=""/>
+    <arg name="sensors" default=""/>
+    <node name="refree" pkg="stage4_refree" type="refree_node"  output="screen" required="true">
+        <param name="realtime_performance_th" value="15000"/>
+        <param name="realtime_performance_per_th" value="0.33"/>
+        <param name="waitfor_player_sec" value="2"/>
+        <param name="json_file_path" value="$(find stage4_refree)/config/settings.json"/>
+        <param name="rosbag_path" value="/home/drone/zlz/dataset/IntelligentUAV_seq3.bag"/>
+        <param name="team" value="$(arg team)"/>
+        <param name="sensors" value="$(arg sensors)"/>
+        <param name="output_path_base" value="$(arg output_path_base)"/>
+    </node>
+</launch>

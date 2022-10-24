@@ -81,9 +81,13 @@ https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_
 https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_t265_01_cali.bag
 ##### 后视相机cam-imu标定
 https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_t265_01_cam_imu_cali.bag
-### 输出话题说明
+### 选手输出话题说明
 1.  选手的估计结果要以话题名为 /player/odom 的形式实时发送出来，/player/odom 的类型为nav_msgs::Odometry；
-2.  /player/odom 的时间戳应和所用的图像一致。如果选用了/front/stereo图片类型，/player/odom的时间戳应该和/front/infra1/image_rect_raw一一对应；如果选用了/front/rgbd，时间戳应该和/front/color/image_raw一一对应; 如果选用了/back/stereo图片类型，时间戳应该和/back/fisheye1/image_raw一一对应；如果选用了/all，的时间戳应该和/front/infra1/image_rect_raw一一对应。
+2.  赛队在赛项四中可选的信息组合有以下几种：/front/stereo ，/front/rgbd ， /back 以及 /all，每种组合评分节点参考时间戳标准如下: <br>
+    a. /front/stereo: 评分节点只会记录和 /front/infra1/image_rect_raw 时间戳一致的/player/odom信息；<br>
+    b. /front/rgbd: 评分节点只会记录和/front/color/image_rect_raw时间戳一致的/player/odom信息；<br>
+    c. /back/stereo: 评分节点只会记录和/back/fisheye1/image_raw时间戳一致的/player/odom信息；<br>
+    d. 如果选用了/all，评分节点只会记录和 /front/infra1/image_rect_raw 时间戳一致的/player/odom信息。
 
 ### 提交说明
 1.  按照 https://github.com/RoboMaster/IntelligentUAVChampionshipBase 中的相关说明将评分节点打包成docker镜像的模式；

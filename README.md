@@ -65,7 +65,7 @@ seq2: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/
 2.  /back/fisheye2/image_raw：后视相机右目图像(像素：848x800，帧率30hz，鱼眼相机模型)；
 
 ### 真值数据说明
-真值由vicion动作捕捉系统捕获得到，真值以txt和tum的格式存储在了result目录下。
+真值由vicon动作捕捉系统捕获得到，真值以txt和tum的格式存储在了GroundTruth目录下。
 
 ### 标定文件说明
 组委会提供了标定结果，以及标定所用的原始rosbag。

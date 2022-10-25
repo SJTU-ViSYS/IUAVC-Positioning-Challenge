@@ -30,10 +30,10 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} RPE_{i,j}^2 } \$$
 ### 评分节点安装教程
 1.  cd YOUR_ROS_WORKSPACE/src
 2.  git clone https://github.com/SJTU-ViSYS/IntelligentUAVChampionshipStage4.git
-3.  cd stage4_refree/third_party/rapidjson
+3.  cd IntelligentUAVChampionshipStage4/thirdparty/rapidjson
 4.  mkdir build && cd build
 5.  cmake .. && make
-6.  cd YOUR_ROS_WORKSPACE/src/stage4_refree/third_party/stage4_evo
+6.  cd YOUR_ROS_WORKSPACE/src/IntelligentUAVChampionshipStage4/thirdparty/stage4_evo
 7.  pip install --editable . --upgrade --no-binary evo
 8.  cd YOUR_ROS_WORKSPACE
 9.  catkin build

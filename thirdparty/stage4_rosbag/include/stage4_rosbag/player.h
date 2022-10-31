@@ -177,7 +177,7 @@ public:
     
     void setMajorTopic(const std::string& major_topic);
     void publish();
-    std::list<std::pair<uint64_t, uint64_t>> iImageStamp_ReciveStamp_;
+    std::vector<std::pair<uint64_t, uint64_t>> iImageStamp_ReciveStamp_;
 private:
     int readCharFromStdin();
     void setupTerminal();

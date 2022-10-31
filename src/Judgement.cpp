@@ -71,7 +71,7 @@ void Judgement::OdomCallback(const nav_msgs::OdometryConstPtr &odomPtr)
 }
 double Judgement::JudgeRealTime()
 {
-    mlImageStamp_ReciveStamp = std::vector(mBagPlayer.iImageStamp_ReciveStamp_.begin(), mBagPlayer.iImageStamp_ReciveStamp_.end());
+    mlImageStamp_ReciveStamp = mBagPlayer.iImageStamp_ReciveStamp_;
     std::size_t totalFrame = mlImageStamp_ReciveStamp.size();
     if (totalFrame == 0)
     {

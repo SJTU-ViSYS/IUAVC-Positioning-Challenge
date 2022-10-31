@@ -36,7 +36,6 @@ include_directories(
   )
 add_library(stage4_rosbag
   thirdparty/stage4_rosbag/src/player.cpp
-  thirdparty/stage4_rosbag/src/recorder.cpp
   thirdparty/stage4_rosbag/src/time_translator.cpp
 )
 

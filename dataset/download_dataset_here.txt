@@ -1,0 +1,2 @@
+seq1: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq1.bag
+seq2: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq2.bag

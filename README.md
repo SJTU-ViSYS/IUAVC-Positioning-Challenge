@@ -5,9 +5,12 @@
 2.  优化了评分节点加载rosbag方式;
 3.  按照最终比赛要求更新了实时性阈值。
 ### 介绍
-[无人机智能感知技术竞赛](https://www.robomaster.com/zh-CN/robo/drone?djifrom=nav_drone)，以“智在飞翔”为主题，致力于打造智能感知与控制领域具有全球影响力的技术赛事。竞赛遵循“创新、合作、开放、开源”的指导思想，通过开放、开源和建立竞赛联盟等形式，旨在加速推动智能感知、定位导航与自主控制等领域的技术创新，并积极促进相关创新成果在无人飞行器领域开展转化与应用，发现和挖掘一批优质潜力项目和创新人才，为无人智能产业培养更多的未来技术领军人才。<br>
-在赛项四-精准定位中，组委会控制一架真实无人机在室内快速飞行，同时录制一段机载相机采集的RGB-D、双目图像以及机载IMU采集的加速度、角速度数据。参赛队伍从Rosbag数据包中读取所需传感器数据，运行状态估计算法，实现无人机状态估计。参赛队伍需利用组委会提供的传感器数据序列，恢复无人机各个时刻相对起飞位置的位姿。组委会将通过对比无人机轨迹真值（通过动捕系统获得）和队伍提交的轨迹，选出精度较高的参赛队伍。
-![capture](doc/seq2_capture2.gif)   
+[无人飞行器智能感知技术竞赛](https://www.robomaster.com/zh-CN/robo/drone?djifrom=nav_drone)以“智在飞翔”为主题，致力于打造智能感知与控制领域具有全球影响力的技术赛事。竞赛遵循“创新、合作、开放、开源”的指导思想，通过开放、开源和建立竞赛联盟等形式，旨在加速推动智能感知、定位导航与自主控制等领域的技术创新，并积极促进相关创新成果在无人飞行器领域开展转化与应用，发现和挖掘一批优质潜力项目和创新人才，为无人智能产业培养更多的未来技术领军人才。<br>
+在无人飞行器智能感知技术竞赛-赛项四-精准定位中，组委会控制一架真实无人机在室内快速飞行，同时录制一段机载相机采集的RGB-D、双目图像以及机载IMU采集的加速度、角速度数据。参赛队伍从Rosbag数据包中读取所需传感器数据，运行状态估计算法，实现无人机状态估计。参赛队伍需利用组委会提供的传感器数据序列，恢复无人机各个时刻相对起飞位置的位姿。组委会将通过对比无人机轨迹真值（通过动捕系统获得）和队伍提交的轨迹，选出精度较高的参赛队伍。
+<div align=center>
+<img src="doc/seq2_capture2.gif" width="70%"/>
+</div>
+<p align="center">Figure 1.  Seq2 部分数据</p>
 ### 竞赛流程与规则
 #### 任务
 赛前，组委会会公布部分采集到的机载数据传感器数据序列以及通过动捕系统获取到的无人机姿态真值，并且会公布各个传感器的外参和标定数据。参赛学生可以通过公布出来的数据集对自身的定位算法进行验证和调优。线下实体赛中，组委会会公布测评用的机载数据传感器的序列。各参赛队伍下载数据之后，运用自己的算法计算出无人机的位姿和轨迹，并将程序打包成docker上传到服务器，以供评分。
@@ -29,11 +32,11 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} RPE_{i,j}^2 } \$$
 
 ### 评分节点安装教程
 1.  cd YOUR_ROS_WORKSPACE/src
-2.  git clone https://gitee.com/zhangLinZuo/stage4_refree.git 
-3.  cd stage4_refree/third_party/rapidjson
+2.  git clone https://github.com/SJTU-ViSYS/IntelligentUAVChampionshipStage4.git
+3.  cd IntelligentUAVChampionshipStage4/thirdparty/rapidjson
 4.  mkdir build && cd build
 5.  cmake .. && make
-6.  cd YOUR_ROS_WORKSPACE/src/stage4_refree/third_party/stage4_evo
+6.  cd YOUR_ROS_WORKSPACE/src/IntelligentUAVChampionshipStage4/thirdparty/stage4_evo
 7.  pip install --editable . --upgrade --no-binary evo
 8.  cd YOUR_ROS_WORKSPACE
 9.  catkin build
@@ -65,7 +68,7 @@ seq2: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/
 2.  /back/fisheye2/image_raw：后视相机右目图像(像素：848x800，帧率30hz，鱼眼相机模型)；
 
 ### 真值数据说明
-真值由vicion动作捕捉系统捕获得到，真值以txt和tum的格式存储在了result目录下。
+真值由vicon动作捕捉系统捕获得到，真值以txt和tum的格式存储在了GroundTruth目录下。
 
 ### 标定文件说明
 组委会提供了标定结果，以及标定所用的原始rosbag。
@@ -81,10 +84,14 @@ https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_
 https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_t265_01_cali.bag
 ##### 后视相机cam-imu标定
 https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_t265_01_cam_imu_cali.bag
-### 输出话题说明
+### 选手输出话题说明
 1.  选手的估计结果要以话题名为 /player/odom 的形式实时发送出来，/player/odom 的类型为nav_msgs::Odometry；
-2.  /player/odom 的时间戳应和所用的图像一致。如果选用了/front/stereo图片类型，/player/odom的时间戳应该和/front/infra1/image_rect_raw一一对应；如果选用了/front/rgbd，时间戳应该和/front/color/image_raw一一对应; 如果选用了/back/stereo图片类型，时间戳应该和/back/fisheye1/image_raw一一对应；如果选用了/all，的时间戳应该和/front/infra1/image_rect_raw一一对应。
+2.  赛队在赛项四中可选的信息组合有以下几种：/front/stereo ，/front/rgbd ， /back 以及 /all，每种组合评分节点参考时间戳标准如下: <br>
+    a. /front/stereo:  评分节点只会记录和 /front/infra1/image_rect_raw 时间戳一致的/player/odom信息；<br>
+    b. /front/rgbd:  评分节点只会记录和/front/color/image_rect_raw时间戳一致的/player/odom信息；<br>
+    c. /back/stereo:  评分节点只会记录和/back/fisheye1/image_raw时间戳一致的/player/odom信息；<br>
+    d. /all:  评分节点只会记录和 /front/infra1/image_rect_raw 时间戳一致的/player/odom信息。
 
 ### 提交说明
 1.  按照 https://github.com/RoboMaster/IntelligentUAVChampionshipBase 中的相关说明将评分节点打包成docker镜像的模式；
-2.  将doker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式并上传.
+2.  将doccker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式并上传.

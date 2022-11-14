@@ -24,7 +24,7 @@
     b. 位姿发布的系统时间晚于当前图像帧发布的系统时间，且小于40ms（要求参赛队在收到图像后的40ms内计算并发布位姿）.<br>
 4.  在 rosbag 播放完成之后，评分节点根据真实轨迹得到每个有效帧的理论真实位姿，并将理论真实位姿和选手的输出位姿进行对比，通过计算 RPE 的 RMSE 进行评分：
 $$E_{i,j} = \delta_{est_{i,j}} \ominus \delta_{ref_{i,j}} = (P_{ref,i}^{-1}P_{ref,j})^{-1} (P_{est,i}^{-1}P_{est,j}) \in \mathrm{SE}(3)\$$
-$$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} RPE_{i,j}^2 } \$$
+$$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 #### 排名方式
 1.  有效帧和图像总帧数的比值必须大于80%，否则无排名资格；
 2.  定位轨迹与真值更接近（RMSE 越小）的队伍排名靠前；

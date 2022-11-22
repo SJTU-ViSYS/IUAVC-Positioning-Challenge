@@ -4,8 +4,8 @@
     <arg name="sensors" default=""/>
     <arg name="rosbag_path" default=""/>
     <node name="refree" pkg="stage4_refree" type="refree_node"  output="screen" required="true">
-        <param name="realtime_performance_th" value="40.0"/>
-        <param name="realtime_performance_per_th" value="0.80"/>
+        <param name="realtime_performance_th" value="104009.0"/>
+        <param name="realtime_performance_per_th" value="0.30"/>
         <param name="waitfor_player_sec" value="2"/>
         <param name="json_file_path" value="$(find stage4_refree)/config/settings.json"/>
         <param name="rosbag_path" value="$(arg rosbag_path)"/>

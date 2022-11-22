@@ -110,4 +110,4 @@ https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_
 
 ### 提交说明
 1.  按照 https://github.com/RoboMaster/IntelligentUAVChampionshipBase 中的相关说明将评分节点打包成docker镜像的模式；
-2.  将doccker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式，在比赛现场的队伍联系场地工作人员注册nas账号，并将docker提交到nas服务器上，不在比赛现场的队伍将镜像上传到百度网盘.
+2.  将doccker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式，在比赛现场的队伍联系场地工作人员注册nas账号，并将docker提交到nas服务器上，不在比赛现场的队伍可以将打包好的 docker 镜像上传到 oss 或者百度网盘上，并且将下载链接通过报名系统发送后台。

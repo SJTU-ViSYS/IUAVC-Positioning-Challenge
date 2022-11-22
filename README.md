@@ -61,7 +61,6 @@ seq3: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/
 seq4: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq4.bag<br>
 seq5: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq5.bag<br>
 seq6: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq6.bag<br>
-seq7: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq7.bag<br>
 #### 数据说明
 用于测试的数据包含6个sequence，各个数据集的特点及难点考察总结如下。<br>
 seq1难度中等，主要挑战点包含快速运动与转向。场景无明暗变化。<br>
@@ -69,7 +68,7 @@ seq2难度高，主要挑战点包含快速运动与转向、较暗环境的特�
 seq3难度高，主要挑战点包含快速运动与转向、较暗环境的特征检测与跟踪，以及强烈的场景明暗变化。<br>
 seq4难度简单，速度及转弯缓慢，场景内无明暗变化<br>
 seq5难度中等，主要挑战点包含快速运动与转向。场景无明暗变化。<br>
-seq6难度监督，速度及转弯缓慢，场景内无明暗变化<br>
+seq6难度简单，速度及转弯缓慢，场景内无明暗变化<br>
 最终测评所用的seq7（线下实体赛时发布），主要挑战点包含快速运动与转向，场景内有明暗变化，难度与场景和seq5相当（请选手不要以提前建图的方式完成比赛。组委会将对疑似提前建图的队伍进行技术审查,并取消提前建图的队伍的成绩）。
 #### 话题说明
 ##### 前视相机(realsense d455，正视前方)

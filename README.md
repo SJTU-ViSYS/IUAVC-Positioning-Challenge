@@ -16,6 +16,7 @@
 <img src="doc/seq2_capture2.gif" width="70%"/>
 </div>
 <p align="center">Figure 1.  Seq2 部分数据</p>
+
 ### 竞赛流程与规则
 #### 任务
 赛前，组委会会公布部分采集到的机载数据传感器数据序列以及通过动捕系统获取到的无人机姿态真值，并且会公布各个传感器的外参和标定数据。参赛学生可以通过公布出来的数据集对自身的定位算法进行验证和调优。线下实体赛中，组委会会公布测评用的机载数据传感器的序列。各参赛队伍下载数据之后，运用自己的算法计算出无人机的位姿和轨迹，并将程序打包成docker上传到服务器，以供评分。
@@ -63,12 +64,12 @@ seq5: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/
 seq6: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq6.bag<br>
 #### 数据说明
 用于测试的数据包含6个sequence，各个数据集的特点及难点考察总结如下。<br>
-seq1难度中等，主要挑战点包含快速运动与转向。场景无明暗变化。<br>
-seq2难度高，主要挑战点包含快速运动与转向、较暗环境的特征检测与跟踪，以及强烈的场景明暗变化。<br>
-seq3难度高，主要挑战点包含快速运动与转向、较暗环境的特征检测与跟踪，以及强烈的场景明暗变化。<br>
-seq4难度简单，速度及转弯缓慢，场景内无明暗变化<br>
-seq5难度中等，主要挑战点包含快速运动与转向。场景无明暗变化。<br>
-seq6难度简单，速度及转弯缓慢，场景内无明暗变化<br>
+seq1难度中等，主要挑战点包含快速运动与转向。场景无明暗变化；<br>
+seq2难度高，主要挑战点包含快速运动与转向、较暗环境的特征检测与跟踪，以及强烈的场景明暗变化；<br>
+seq3难度高，主要挑战点包含快速运动与转向、较暗环境的特征检测与跟踪，以及强烈的场景明暗变化；<br>
+seq4难度简单，速度及转弯缓慢，场景内无明暗变化；<br>
+seq5难度中等，主要挑战点包含快速运动与转向。场景无明暗变化；<br>
+seq6难度简单，速度及转弯缓慢，场景内无明暗变化；<br>
 最终测评所用的seq7（线下实体赛时发布），主要挑战点包含快速运动与转向，场景内有明暗变化，难度与场景和seq5相当（请选手不要以提前建图的方式完成比赛。组委会将对疑似提前建图的队伍进行技术审查,并取消提前建图的队伍的成绩）。
 #### 话题说明
 ##### 前视相机(realsense d455，正视前方)
@@ -109,4 +110,4 @@ https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_
 
 ### 提交说明
 1.  按照 https://github.com/RoboMaster/IntelligentUAVChampionshipBase 中的相关说明将评分节点打包成docker镜像的模式；
-2.  将doccker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式并上传.
+2.  将doccker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式，在比赛现场的队伍联系场地工作人员注册nas账号，并将docker提交到nas服务器上，不在比赛现场的队伍将镜像上传到百度网盘.

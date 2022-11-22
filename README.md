@@ -1,6 +1,11 @@
 #  无人机智能感知技术竞赛-赛项四-精准定位
 ### 更新说明
 #### 2022/10.31
+1.  调整了实时性判定标准：延时要求从小于等于40ms降低到小于等于70ms；有效帧占图像总帧数的比例由大于等于70%降低至大于等于50%;
+2.  补充测试数据集seq3~seq6;
+2.  输出的结果中增添了实时性判定结果以及有效帧占比；
+
+#### 2022/10.31
 1.  修复了ubuntu18.04兼容问题;
 2.  优化了评分节点加载rosbag方式;
 3.  按照最终比赛要求更新了实时性阈值。
@@ -21,12 +26,14 @@
 3. 	评分节点将接收选手发送的位姿信息，如果该帧位姿的时间戳满足下列两个条件，将被设置为
 有效帧，并且记录该帧数据：<br>
     a. 所填写的时间戳和当前图像的时间戳一致;<br>
-    b. 位姿发布的系统时间晚于当前图像帧发布的系统时间，且小于40ms（要求参赛队在收到图像后的40ms内计算并发布位姿）.<br>
+    b. 位姿发布的系统时间晚于当前图像帧发布的系统时间，且小于70ms（要求参赛队在收到图像后的70ms内计算并发布位姿）.<br>
 4.  在 rosbag 播放完成之后，评分节点根据真实轨迹得到每个有效帧的理论真实位姿，并将理论真实位姿和选手的输出位姿进行对比，通过计算 RPE 的 RMSE 进行评分：
 $$E_{i,j} = \delta_{est_{i,j}} \ominus \delta_{ref_{i,j}} = (P_{ref,i}^{-1}P_{ref,j})^{-1} (P_{est,i}^{-1}P_{est,j}) \in \mathrm{SE}(3)\$$
 $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
+
+
 #### 排名方式
-1.  有效帧和图像总帧数的比值必须大于80%，否则无排名资格；
+1.  有效帧和图像总帧数的比值必须大于50%，否则无排名资格；
 2.  定位轨迹与真值更接近（RMSE 越小）的队伍排名靠前；
 3.  如果 RMSE 差值绝对值小于 0.0001，则有效帧数较多的队伍排名靠前。
 4.  若上述条件均无法排出先后，则比较所有有效帧数的平均延时（精确到 10us），平均延时低者排名靠前
@@ -46,16 +53,26 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 1.  修改config/settings.json文件，指定队伍名称，采用的图像类型(/front/stereo 或者 /front/rgbd 或者 /back 或者 /all)；
 2.  将数据集下载到dataset目录下;
 3.  启动位姿估计节点；
-4.  执行./refree.sh，输入要测试的数据集(seq1或者seq2);
+4.  执行./refree.sh，输入要测试的数据集(seq1~seq6);
 5.  在result/${team}目录下查看评分结果。
 
 ### 数据集说明
 #### 数据下载地址：
 seq1: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq1.bag<br>
-seq2: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq2.bag
+seq2: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq2.bag<br>
+seq3: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq3.bag<br>
+seq4: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq4.bag<br>
+seq5: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq5.bag<br>
+seq6: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/IntelligentUAV_seq6.bag<br>
 #### 数据说明
-用于测试的数据包含两个sequence。其中seq1较简单，主要挑战点包含快速运动与转向。seq2较难，主要挑战点包含快速运动与转向、较暗环境的特征检测与跟踪，以及场景的明暗变化。<br>
-最终测评所用的seq3（线下实体赛时发布）难度介于seq1和seq2之间，场景和seq1和seq2相比会有较大变化（请选手不要以提前建图的方式完成比赛。组委会将对疑似提前建图的队伍进行技术审查,并取消提前建图的队伍的成绩）。
+用于测试的数据包含6个sequence，各个数据集的特点及难点考察总结如下:<br>
+1.  seq1难度中等，主要挑战点包含快速运动与转向。场景无明暗变化；<br>
+2.  seq2难度高，主要挑战点包含快速运动与转向、较暗环境的特征检测与跟踪，以及强烈的场景明暗变化；<br>
+3.  seq3难度高，主要挑战点包含快速运动与转向、较暗环境的特征检测与跟踪，以及强烈的场景明暗变化；<br>
+4.  seq4难度简单，速度及转弯缓慢，场景内无明暗变化；<br>
+5.  seq5难度中等，主要挑战点包含快速运动与转向。场景无明暗变化；<br>
+6.  seq6难度简单，速度及转弯缓慢，场景内无明暗变化；<br>
+最终测评所用的seq7（线下实体赛时发布），主要挑战点包含快速运动与转向，场景内有明暗变化，难度与场景和seq5相当（请选手不要以提前建图的方式完成比赛。组委会将对疑似提前建图的队伍进行技术审查,并取消提前建图的队伍的成绩）。
 #### 话题说明
 ##### 前视相机(realsense d455，正视前方)
 1.  /front/imu：前视相机imu(帧率200hz)；
@@ -69,7 +86,7 @@ seq2: https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/dataset/
 2.  /back/fisheye2/image_raw：后视相机右目图像(像素：848x800，帧率30hz，鱼眼相机模型)；
 
 ### 真值数据说明
-真值由vicon动作捕捉系统捕获得到，真值以txt和tum的格式存储在了GroundTruth目录下。
+真值由vicon动作捕捉系统捕获得到，真值以tum的格式存储在了GroundTruth目录下。
 
 ### 标定文件说明
 组委会提供了标定结果，以及标定所用的原始rosbag。
@@ -95,4 +112,4 @@ https://intelligent-uav-championship.oss-cn-shanghai.aliyuncs.com/calibrate/nuc_
 
 ### 提交说明
 1.  按照 https://github.com/RoboMaster/IntelligentUAVChampionshipBase 中的相关说明将评分节点打包成docker镜像的模式；
-2.  将doccker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式并上传.
+2.  将doccker镜像重命名为 队名_图像类型.tar (如 sjtu_front_stereo.tar, sjtu_back.tar)的形式，在比赛现场的队伍联系场地工作人员注册nas账号，并将docker提交到nas服务器上，不在比赛现场的队伍可以将打包好的 docker 镜像上传到 oss 或者百度网盘上，并且将下载链接通过报名系统发送后台。

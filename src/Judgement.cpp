@@ -53,17 +53,18 @@ void Judgement::Loop()
     resJsonFilePath = mstrOutFilePathBase + "/" + mstrTeam + "_result.json";
     ROS_DEBUG("res write in %s", resJsonFilePath.c_str());
     std::ofstream resJsonFile;
-    resJsonFile.open(resJsonFilePath);   
+    resJsonFile.open(resJsonFilePath); 
     if (realtimePercentage > mdRealtimePerformancePerTh)
-    {    
-        resJsonFile << "{ \"delay\": " << mfDelayAvg << "}" << std::endl;
+    {
+        resJsonFile << "{ \"Realtime\": \"qualified\", ";
         ROS_INFO("Meeting real-time requirements. Start calculate RPE.");
     }
     else
     {
-        resJsonFile<<"{ \"delay\": \" --- \"}"<<std::endl;
+        resJsonFile << "{ \"Realtime\": \"unqualified\", ";
         ROS_INFO("Not meeting real-time requirements.");
     }
+    resJsonFile << "\"delay\": " << mfDelayAvg <<", \"ValidFramePercentage\": " <<realtimePercentage<<" }" << std::endl;  
 }
 void Judgement::OdomCallback(const nav_msgs::OdometryConstPtr &odomPtr)
 {

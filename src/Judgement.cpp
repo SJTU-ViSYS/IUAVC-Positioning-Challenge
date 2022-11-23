@@ -18,7 +18,7 @@ Judgement::Judgement(ros::NodeHandle &_nh) : mNodeHandle(_nh)
     if(sensorsStr=="/front/rgbd"){
         mstrMajorImgTopic="/front/color/image_raw";
     }
-    else if(sensorsStr=="/front/stereo" || sensorsStr=="all"){
+    else if(sensorsStr=="/front/stereo" || sensorsStr=="/all"){
         mstrMajorImgTopic="/front/infra1/image_rect_raw";
     }
     else if (sensorsStr=="/back"){

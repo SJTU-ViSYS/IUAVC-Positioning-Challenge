@@ -89,6 +89,7 @@ def plotResult(
     traj_est: PosePath3D,
     res_path: str,
     traj_ref_full: typing.Optional[PosePath3D] = None,
+    plot_disable = True
 ) -> None:
     
     from evo.tools.settings import SETTINGS
@@ -167,8 +168,9 @@ def plotResult(
     plot_collection.add_figure("map", fig2)
     fig1.savefig(res_path + '/' + result.info["title"] + "_raw.png")
     fig2.savefig(res_path + '/' + result.info["title"] + "_map.png")
-    plot_collection.show()
-    plot_collection.close()
+    if not plot_disable:
+        plot_collection.show()
+        plot_collection.close()
     
 def run(reference:str, out_path:str):
     est_file = ""
@@ -211,6 +213,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o", "--output", action="store", required=True, help="Path of the output folder"
     )
+    parser.add_argument(
+        "-p", "--plot_disable", default=False, action="store_true", required=False, help="Disable Plot"
+    )
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(2)
@@ -235,7 +240,7 @@ if __name__ == "__main__":
     for key, val in rpe.stats.items():
         print("\t" + key + "\t" + str(val))    
     ape.info['title'] = "ape"
-    plotResult(ape, trj1, trj2, out_path)
+    plotResult(ape, trj1, trj2, out_path, plot_disable=args.plot_disable)
     rpe.info['title'] = "rpe"
-    plotResult(rpe, trj1, trj2, out_path)
+    plotResult(rpe, trj1, trj2, out_path, plot_disable=args.plot_disable)
     update_res(ape, rpe, res_file)

@@ -3,8 +3,10 @@ import time
 import docker
 import logging
 import subprocess
+import json
 class DockerUpdater:
-    def __init__(self, image_folder_path, history_image_path) -> None:
+    def __init__(self, image_folder_path, history_image_path,seq:str) -> None:
+        self.seq = seq
         self.logger = logging.getLogger('./logs/update_log')
         self.InitLogger()
         self.docker_cilent = docker.from_env()
@@ -49,7 +51,7 @@ class DockerUpdater:
     def ExcShell(self,team:str,school:str,image:str):
         shell_script_path = 'refree_docker_auto.sh'
         try:
-            subprocess.run(['bash', shell_script_path,"1", team, image], check=True)
+            subprocess.run(['bash', shell_script_path, self.seq, team, image], check=True)
             self.logger.info("Shell 脚本执行成功")
         except subprocess.CalledProcessError as e:
             self.logger.error(f"Shell 脚本执行失败，返回码: {e.returncode}")
@@ -70,6 +72,15 @@ class DockerUpdater:
     def GetSchoolAndTeam(self, image_name:str):
         parts = image_name.split(".")[0].split("_")
         return parts[0],parts[1]
+    def UpdateResultJSON(self, team:str, school:str):
+        outputjson = os.path.join(os.getcwd(),"result", team, f"seq{self.seq}", f"{team}_result.json")
+        with open(outputjson, 'r') as file:
+            data = json.load(file)
+        res = {"team":team, "school":school}
+        data.update(res)
+        with open(outputjson, 'w') as file:
+            json.dump(data, file, indent=4)
+
     def Update(self):
         files = os.listdir(self.image_folder_path)
         tar_files = [file for file in files if file.endswith('.tar')]
@@ -77,22 +88,23 @@ class DockerUpdater:
             return
         for tar_file in tar_files:
             tar_path = os.path.join(self.image_folder_path, tar_file)
-            self.logger.info(f"Find one tar_file {tar_path}")
+            self.logger.info(f"正在处理: {tar_path}")
             with open(tar_path, 'rb') as image_file:
-                self.logger.info(f"Loading : {tar_path}")
+                self.logger.info(f"正在加载镜像: {tar_path}")
                 response = self.docker_cilent.images.load(image_file.read())
-                self.logger.info(f"Loaded  {tar_path}")
+                self.logger.info(f"加载镜像成功: {tar_path}")
                 self.logger.info(response)
             os.rename(tar_path, os.path.join(self.hisoty_image_path, tar_file))
             school,team =self.GetSchoolAndTeam(tar_file)
             image = self.GetImageName()
             self.logger.info(f"运行镜像: {image}: \n学校: {school}, 队伍: {team}")
             self.ExcShell(team, school,image)
+            self.UpdateResultJSON(team,school)
             self.StopAllDockerContainer()
             self.ClearImages()
 if __name__ == "__main__":
     image_folder_path = "ContestJZDW" 
-    docker_updater = DockerUpdater(image_folder_path,"./ContestJZDW/history")
+    docker_updater = DockerUpdater(image_folder_path,"./ContestJZDW/history","3")
     while True:
         docker_updater.Update()
         time.sleep(10)

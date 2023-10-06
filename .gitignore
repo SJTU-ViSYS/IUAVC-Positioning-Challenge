@@ -5,3 +5,4 @@ logs/
 *.tar
 *.bag
 __pycache__/
+result/

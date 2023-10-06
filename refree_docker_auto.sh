@@ -16,4 +16,4 @@ for session in $session_list; do
     session_id=$(echo "$session" | cut -d. -f1)
     screen -S "$session_id" -X quit
 done
-python3 tools/evo_stage4.py -r ./ground_truth/IntelligentUAV2023_${seq}.tum -o ${output_path} 
+python3 tools/evo_stage4.py -r ./ground_truth/IntelligentUAV2023_${seq}.tum -o ${output_path} -p

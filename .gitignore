@@ -1,0 +1,7 @@
+.vscode/
+build/
+ContestJZDW/
+logs/
+*.tar
+*.bag
+__pycache__/

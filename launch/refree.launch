@@ -1,0 +1,14 @@
+<launch>
+    <arg name="output_path_base" default=""/>
+    <arg name="team" default=""/>
+    <arg name="rosbag_path" default=""/>
+    <node name="refree" pkg="stage4_refree" type="refree_node"  output="screen">
+        <param name="realtime_performance_th" value="80.0"/>
+        <param name="realtime_performance_per_th" value="0.50"/>
+        <param name="waitfor_player_sec" value="4"/>
+        <param name="json_file_path" value="$(find stage4_refree)/config/settings.json"/>
+        <param name="rosbag_path" value="$(arg rosbag_path)"/>
+        <param name="team" value="$(arg team)"/>
+        <param name="output_path_base" value="$(arg output_path_base)"/>
+    </node>
+</launch>

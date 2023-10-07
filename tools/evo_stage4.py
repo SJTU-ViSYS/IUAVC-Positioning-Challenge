@@ -21,8 +21,6 @@ def update_res(ape_res:Result, rpe_res:Result, outputjson:str):
     with open(outputjson, 'w') as file:
         json.dump(data, file, indent=4)
 
-
-
 def align_trajectory_whole(trj_est, trj_gt):
     trj_gt_sync, trj_est_sync = sync.associate_trajectories(trj_gt, trj_est)
     trj_copy = copy.deepcopy(

@@ -17,8 +17,6 @@ class DockerUpdater:
                 self.logger.info(f"文件夹 {history_image_path} 创建成功")
             except OSError as e:
                 self.logger.error(f"无法创建文件夹 {history_image_path}: {e}")
-        else:
-            self.logger.info(f"文件夹 {history_image_path} 已存在")
         self.hisoty_image_path = history_image_path
         self.StopAllDockerContainer()
         self.ClearImages()
@@ -52,9 +50,9 @@ class DockerUpdater:
         shell_script_path = 'refree_docker_auto.sh'
         try:
             subprocess.run(['bash', shell_script_path, self.seq, team, image], check=True)
-            self.logger.info("Shell 脚本执行成功")
+            self.logger.info("脚本执行成功")
         except subprocess.CalledProcessError as e:
-            self.logger.error(f"Shell 脚本执行失败，返回码: {e.returncode}")
+            self.logger.error(f"脚本执行失败，返回码: {e.returncode}")
     def InitLogger(self):
         logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)s %(message)s',
@@ -80,7 +78,7 @@ class DockerUpdater:
         data.update(res)
         with open(outputjson, 'w') as file:
             json.dump(data, file, indent=4)
-
+            self.logger.info(f"运行结束， 结果保存在: {outputjson}\n")
     def Update(self):
         files = os.listdir(self.image_folder_path)
         tar_files = [file for file in files if file.endswith('.tar')]
@@ -92,12 +90,11 @@ class DockerUpdater:
             with open(tar_path, 'rb') as image_file:
                 self.logger.info(f"正在加载镜像: {tar_path}")
                 response = self.docker_cilent.images.load(image_file.read())
-                self.logger.info(f"加载镜像成功: {tar_path}")
-                self.logger.info(response)
+                self.logger.info(f"加载镜像成功: {tar_path}. Info: {response}")
             os.rename(tar_path, os.path.join(self.hisoty_image_path, tar_file))
             school,team =self.GetSchoolAndTeam(tar_file)
             image = self.GetImageName()
-            self.logger.info(f"运行镜像: {image}: \n学校: {school}, 队伍: {team}")
+            self.logger.info(f"学校: {school}, 队伍: {team}, 镜像: {image} 正在运行.")
             self.ExcShell(team, school,image)
             self.UpdateResultJSON(team,school)
             self.StopAllDockerContainer()
@@ -107,4 +104,4 @@ if __name__ == "__main__":
     docker_updater = DockerUpdater(image_folder_path,"./ContestJZDW/history","3")
     while True:
         docker_updater.Update()
-        time.sleep(10)
+        time.sleep(1)

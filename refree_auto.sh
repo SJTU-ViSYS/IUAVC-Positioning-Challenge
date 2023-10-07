@@ -10,6 +10,7 @@ screen -S roscore_session -d -m roscore
 sleep 1s
 screen -S roslaunch_session  -d -m bash ./tools/start_judge.sh ${output_path} ${team} ${rosbag_path}
 roslaunch orb_slam3 start_slam_stereo_i_OAK.launch # 将此处修改为位姿估计节点启动程序
+# roslaunch vins oak.launch # 将此处修改为位姿估计节点启动程序
 session_list=$(screen -ls | grep -o '[0-9]\+\.[^\t]*')
 for session in $session_list; do
     session_id=$(echo "$session" | cut -d. -f1)

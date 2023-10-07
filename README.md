@@ -3,7 +3,7 @@
 [无人飞行器智能感知技术竞赛](https://www.robomaster.com/zh-CN/robo/drone?djifrom=nav_drone)以“智在飞翔”为主题，致力于打造智能感知与控制领域具有全球影响力的技术赛事。竞赛遵循“创新、合作、开放、开源”的指导思想，通过开放、开源和建立竞赛联盟等形式，旨在加速推动智能感知、定位导航与自主控制等领域的技术创新，并积极促进相关创新成果在无人飞行器领域开展转化与应用，发现和挖掘一批优质潜力项目和创新人才，为无人智能产业培养更多的未来技术领军人才。<br>
 在无人飞行器智能感知技术竞赛-赛项四-精准定位中，组委会控制一架真实无人机在室内快速飞行，同时录制一段机载相机采集的多目图像以及机载IMU采集的加速度、角速度数据。参赛队伍从Rosbag数据包中读取所需传感器数据，运行状态估计算法，实现无人机状态估计。参赛队伍需利用组委会提供的传感器数据序列，恢复无人机各个时刻相对起飞位置的位姿。组委会将通过对比无人机轨迹真值（通过动捕系统获得）和队伍提交的轨迹，选出精度较高的参赛队伍。
 <div align=center>
-<img src="doc/seq3parten.gif" width="70%"/>
+<img src="doc/seq3parten.gif"/>
 </div>
 <p align="center">Figure 1.  Seq3 部分数据</p>
 
@@ -24,7 +24,7 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 6.  如果参赛队的APE的RMSE最低值大于5m，那么该参赛队列为A类排名，否则将被列为B类排名。在B类排名中，根据计算RPE的RMSE对参赛队重新排名：
 $$E_{i,j} = \delta_{est_{i,j}} \ominus \delta_{ref_{i,j}} = (P_{ref,i}^{-1}P_{ref,j})^{-1} (P_{est,i}^{-1}P_{est,j}) \in \mathrm{SE}(3)\$$
 $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
-关于APE和RPE，可以详细参考：https://github.com/MichaelGrupp/evo/blob/v1.23.0/notebooks/metrics.py_API_Documentation.ipynb
+关于APE和RPE，可以详细参考：[EVO文档](https://github.com/MichaelGrupp/evo/blob/v1.23.0/notebooks/metrics.py_API_Documentation.ipynb)
 #### 排名方式
 1.  有效帧和图像总帧数的比值必须大于80%，否则无排名资格；
 2.  如果APE 的 RMSE 小于 5m,那么定位轨迹与真值更接近 (APE 的 RMSE越
@@ -54,9 +54,9 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 用于测试的数据包含3个sequence，三个数据集的特点如下：
 seq|大小/GB|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
 --|:--|:--:|:--:|:--:|:--:|:--:|
-1|1.5|慢|包含|不包含|包含|
-2|2.0|慢|包含|不包含|包含|
-3|2.6|较快|包含|不包含|包含|
+1|1.5|慢|包含|不包含|不包含|包含|
+2|2.0|慢|包含|不包含|不包含|包含|
+3|2.6|较快|包含|包含|不包含|包含|
 
 #### 话题及传感器说明
 ##### 环视相机
@@ -64,7 +64,7 @@ seq|大小/GB|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
 <div align=center>
 <img src="doc/drone.jpg" width="70%"/>
 </div>
-<p align="center">相机分布</p>
+<p align="center">Figure 2.  相机分布</p>
 OAK FFC4p相关话题名称如下：
 
 1.  /oak_ffc/front_left/image，前视左侧相机，像素：600x400，帧率30hz

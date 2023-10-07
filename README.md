@@ -49,14 +49,26 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 
 ### 数据集说明
 #### 数据下载地址：
-（待定）
+<div align=center>
+
+seq|大小/GB|百度网盘|谷歌云盘|
+:--:|:--:|:--:|:--:|
+1|1.5|[提取码：3nxd](https://pan.baidu.com/s/1j-8KskrRKXu-6FXjgo1vlg)|[链接](https://drive.google.com/file/d/1x8rPkdfqzyB9AT_iKdZW0ZrOVaTaui49/view?usp=sharing)|
+2|2.0|[提取码：yu9t](https://pan.baidu.com/s/10mrXW0q-36rTbJSXGXpSTQ)|[链接](https://drive.google.com/file/d/156gP97Wccs3C72UQhwSyeJR7CmTuDYAB/view?usp=sharing)|
+3|2.6|[提取码：k2zn](https://pan.baidu.com/s/1O5ECYYZAGgDdWcimZReyuQ)|[链接](https://drive.google.com/file/d/14yXoX-YHv3GGccZ9JtAg1aXYgyChrsfH/view?usp=sharing)|
+
+</div>
+
 #### 数据说明
 用于测试的数据包含3个sequence，三个数据集的特点如下：
-seq|大小/GB|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
---|:--:|:--:|:--:|:--:|:--:|:--:|
-1|1.5|慢|包含|不包含|不包含|包含|
-2|2.0|慢|包含|不包含|不包含|包含|
-3|2.6|较快|包含|包含|不包含|包含|
+<div align="center">
+
+seq|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
+:--:|:--:|:--:|:--:|:--:|:--:|
+1|慢|包含|不包含|不包含|包含|
+2|慢|包含|不包含|不包含|包含|
+3|较快|包含|包含|不包含|包含|
+</div>
 
 #### 话题及传感器说明
 ##### 环视相机
@@ -81,13 +93,23 @@ OAK FFC4p相关话题名称如下：
 ### 真值数据说明
 真值由动作捕捉系统捕获得到，以/motion_capture/odom的ros话题形式存储在bag数据集中（正式比赛的bag包不包含该话题）。同时，真值也以tum格式存储在ground_truth目录下。
 
-### 标定文件说明
-组委会提供了标定结果，以及标定所用的原始rosbag。
-#### 标定结果
-(下载链接待定)
 ### 选手输出话题说明
 1.  选手的估计结果要以话题名为 /player/odom 的形式实时发送出来，/player/odom 的类型为nav_msgs::Odometry；
 2.  请在发布话题时注意，要手动填写header中的时间戳，评分节点只会记录和 /oak_ffc/front_left/image 时间戳一致的/player/odom信息: <br>
+
+### 标定文件说明
+组委会提供了标定结果，以及标定所用的原始rosbag。
+#### 标定结果
+<div align="center">
+
+说明|百度网盘|谷歌云盘|
+:--:|:--:|:--:|
+飞控IMU-相机内外参结果|[提取码：qmtt](https://pan.baidu.com/s/1g_a2EEymg7jZLqxfTICRnQ)|[链接](https://drive.google.com/drive/folders/1-PBsh7Dq1YBWdkvlD7YUuZhamPmfLDYl?usp=sharing)|
+板载IMU-相机内外参结果|[提取码：16ne](https://pan.baidu.com/s/1ZiQ0PJ-deJ6tmqJnF25qpA)|[链接](https://drive.google.com/drive/folders/1-LQGFShkuSb_ylQiElDkwP_dcOR2egFp?usp=sharing)|
+IMU标定结果|[提取码：2idj](https://pan.baidu.com/s/15T7JDsTVm56YTILaXCuaQw)|[链接](https://drive.google.com/drive/folders/1-Qwb8bZEX9uUjdjo3jjm7Mywo8_JC0fD?usp=sharing)
+内外参标定原始数据|[提取码：4zm1](https://pan.baidu.com/s/1cJj-WcmwjrTcIe4nfuf3Pw)|[链接](https://drive.google.com/drive/folders/1-0DcLUZ4vPFvZcCSN5A6QA4QTSbGLpD3?usp=sharing)|
+</div>
+
 
 ### 提交说明（待定）
 1.  按照 https://github.com/RoboMaster/IntelligentUAVChampionshipBase 中的相关说明将评分节点打包成docker镜像的模式；(待定，重新编写该部分的内容)

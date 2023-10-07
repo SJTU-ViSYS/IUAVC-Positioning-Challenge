@@ -67,10 +67,10 @@ seq|大小/GB|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
 <p align="center">Figure 2.  相机分布</p>
 OAK FFC4p相关话题名称如下：
 
-1.  /oak_ffc/front_left/image，前视左侧相机，像素：600x400，帧率30hz
-2.  /oak_ffc/front_right/image，前视右侧相机，像素：600x400，帧率30hz
-3.  /oak_ffc/left/image，侧边左视相机，像素：600x400，帧率30hz
-4.  /oak_ffc/right/image，侧边右视相机，像素：600x400，帧率30hz
+1.  /oak_ffc/front_left/image，前视左侧相机，像素：680x400，帧率30hz
+2.  /oak_ffc/front_right/image，前视右侧相机，像素：680x400，帧率30hz
+3.  /oak_ffc/left/image，侧边左视相机，像素：680x400，帧率30hz
+4.  /oak_ffc/right/image，侧边右视相机，像素：680x400，帧率30hz
 5.  /oak_ffc/imu，板载IMU，帧率100hz
 ##### 飞控IMU
 数据集中包含了飞控IMU信息，帧率230hz，话题名称为/mavros/imu/data

@@ -42,7 +42,7 @@
 > 运行评分节点
 >+  将数据集下载到dataset目录下;
 >+  启动位姿估计节点；
->+  在IntelligentUAVChampoinshipStage4目录下打开终端，输入指令：`./refree.sh`  [sequence_number] [team]，其中***sequence_number***是seq编号，***team***是自定义队伍名称， 如：`./refree.sh  1 sjtu`;
+>+  在*IntelligentUAVChampoinshipStage4*目录下打开终端，输入指令：`./refree.sh  [sequence_number] [team]`，其中***sequence_number***是seq编号，***team***是自定义队伍名称， 如：`./refree.sh  1 sjtu`;
 >+  在评分节点终端输入回车键，开始播放数据；
 >+  数据播放结束后，在*result/[team]/[seq]* 目录下查看评分结果。
 

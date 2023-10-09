@@ -46,10 +46,10 @@ class DockerUpdater:
         images = self.docker_cilent.images.list()
         assert(len(images) == 1)
         return images[0].id
-    def ExcShell(self,team:str,school:str,image:str):
+    def ExcShell(self,team:str,school:str,image:str, no:str):
         shell_script_path = 'refree_docker_auto.sh'
         try:
-            subprocess.run(['bash', shell_script_path, self.seq, team, image], check=True)
+            subprocess.run(['bash', shell_script_path, self.seq, team, image, no], check=True)
             self.logger.info("脚本执行成功")
         except subprocess.CalledProcessError as e:
             self.logger.error(f"脚本执行失败，返回码: {e.returncode}")
@@ -70,11 +70,11 @@ class DockerUpdater:
     def GetSchoolAndTeam(self, image_name:str):
         parts = image_name.split(".")[0].split("_")
         return parts[0],parts[1]
-    def UpdateResultJSON(self, team:str, school:str):
-        outputjson = os.path.join(os.getcwd(),"result", team, f"seq{self.seq}", f"{team}_result.json")
+    def UpdateResultJSON(self, team:str, school:str, no:str):
+        outputjson = os.path.join(os.getcwd(),"result", team, f"seq{self.seq}",f"no{no}", f"{team}_result.json")
         with open(outputjson, 'r') as file:
             data = json.load(file)
-        res = {"team":team, "school":school}
+        res = {"no":no,"team":team, "school":school}
         data.update(res)
         with open(outputjson, 'w') as file:
             json.dump(data, file, indent=4)
@@ -94,9 +94,10 @@ class DockerUpdater:
             os.rename(tar_path, os.path.join(self.hisoty_image_path, tar_file))
             school,team =self.GetSchoolAndTeam(tar_file)
             image = self.GetImageName()
-            self.logger.info(f"学校: {school}, 队伍: {team}, 镜像: {image} 正在运行.")
-            self.ExcShell(team, school,image)
-            self.UpdateResultJSON(team,school)
+            for no in range(1,6):
+                self.logger.info(f"学校: {school}, 队伍: {team}, 镜像: {image} 正在运行第{no}次.")
+                self.ExcShell(team, school,image, str(no))
+                self.UpdateResultJSON(team,school, str(no))
             self.StopAllDockerContainer()
             self.ClearImages()
 if __name__ == "__main__":

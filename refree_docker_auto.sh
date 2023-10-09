@@ -2,7 +2,8 @@
 seq="seq$1"
 team="$2"
 image="$3"
-output_path=$(pwd)/result/${team}/${seq}
+no="no$4"
+output_path=$(pwd)/result/${team}/${seq}/${no}
 rosbag_path=$(pwd)/dataset/IntelligentUAV2023_${seq}.bag
 if [ -d "${output_path}" ]; then rm -rf ${output_path}; fi
 mkdir -p ${output_path}

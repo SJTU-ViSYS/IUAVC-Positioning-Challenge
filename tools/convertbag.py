@@ -23,8 +23,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 delete_topics = {"/mavros/rc/in"}
-bag_file_path = args.bag.strip('"')
-bag_file_path = args.bag.strip('\'')
+bag_file_path = args.bag.strip('"').strip('\'')
 # 检查输入的文件是否存在
 if not os.path.isfile(bag_file_path):
     print("输入的文件不存在。")

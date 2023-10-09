@@ -52,9 +52,9 @@
 
 seq|大小/GB|百度网盘|谷歌云盘|
 :--:|:--:|:--:|:--:|
-1|1.5|[提取码：3nxd](https://pan.baidu.com/s/1j-8KskrRKXu-6FXjgo1vlg)|[链接](https://drive.google.com/file/d/1x8rPkdfqzyB9AT_iKdZW0ZrOVaTaui49/view?usp=sharing)|
-2|2.0|[提取码：yu9t](https://pan.baidu.com/s/10mrXW0q-36rTbJSXGXpSTQ)|[链接](https://drive.google.com/file/d/156gP97Wccs3C72UQhwSyeJR7CmTuDYAB/view?usp=sharing)|
-3|2.6|[提取码：k2zn](https://pan.baidu.com/s/1O5ECYYZAGgDdWcimZReyuQ)|[链接](https://drive.google.com/file/d/14yXoX-YHv3GGccZ9JtAg1aXYgyChrsfH/view?usp=sharing)|
+1|1.5|[提取码：f490](https://pan.baidu.com/s/16MQNRhdljvrc-Td_oj09CA)|[链接](https://drive.google.com/file/d/1oWS038f2ckRZygXCYVXzWnqU_79Cwu8q/view?usp=sharing)|
+2|2.0|[提取码：0id0](https://pan.baidu.com/s/1TbrjrDt0aS-gpmyI9sZ8gg)|[链接](https://drive.google.com/file/d/1aGHneHb9FYjYX1R7qILsKXqeeCjrF7lX/view?usp=sharing)|
+3|2.6|[提取码：pair](https://pan.baidu.com/s/1uIGWzsoj8wi631GD-411tg)|[链接](https://drive.google.com/file/d/1-9tpv_7gPNrxjD14PK8q890fXl-Zdy9p/view?usp=sharing)|
 
 </div>
 

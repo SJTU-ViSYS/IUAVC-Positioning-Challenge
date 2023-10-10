@@ -9,7 +9,7 @@
 
 ## 2. 竞赛流程与规则
 ### 2.1 任务
->赛前，组委会会公布部分采集到的机载数据传感器数据序列以及通过动捕系统获取到的无人机姿态真值，并且会公布各个传感器的外参和标定数据。参赛学生可以通过公布出来的数据集对自身的定位算法进行验证和调优。线下实体赛中，组委会会公布测评用的机载数据传感器的序列。各参赛队伍下载数据之后，运用自己的算法计算出无人机的位姿和轨迹，并将程序打包成docker上传到服务器，以供评分。
+>赛前，组委会会公布部分采集到的机载数据传感器数据序列以及通过动捕系统获取到的无人机姿态真值，并且会公布各个传感器的外参和标定数据。参赛学生可以通过公布出来的数据集对自身的定位算法进行验证和调优。实际比赛期间,各参赛队伍将程序打包成docker上传到服务器，以供评分。
 ###  2.2 评分规则
 >+  参赛队将代码封装为docker并上传。组委会在评分时首先启动评分节点和选手提供的roslaunch文件，间隔2s后再播放rosbag；
 >+  在 rosbag 播放后，参赛队根据图像与IMU数据，计算输出当前时刻图像帧的位置姿态。注意，输出位姿的时间戳应和当前时刻图像帧的时间戳保持一致，时间戳与图像时间戳不同的位姿数据将被忽略。
@@ -48,11 +48,11 @@
 ### 4.1 数据下载地址：
 <div align=center>
 
-seq|大小/GB|百度网盘|谷歌云盘|
-:--:|:--:|:--:|:--:|
-1|1.5|[提取码：f490](https://pan.baidu.com/s/16MQNRhdljvrc-Td_oj09CA)|[链接](https://drive.google.com/file/d/1oWS038f2ckRZygXCYVXzWnqU_79Cwu8q/view?usp=sharing)|
-2|2.0|[提取码：0id0](https://pan.baidu.com/s/1TbrjrDt0aS-gpmyI9sZ8gg)|[链接](https://drive.google.com/file/d/1aGHneHb9FYjYX1R7qILsKXqeeCjrF7lX/view?usp=sharing)|
-3|2.6|[提取码：pair](https://pan.baidu.com/s/1uIGWzsoj8wi631GD-411tg)|[链接](https://drive.google.com/file/d/1-9tpv_7gPNrxjD14PK8q890fXl-Zdy9p/view?usp=sharing)|
+seq|大小/GB|长度/s|百度网盘|谷歌云盘|
+:--:|:--:|:--:|:--:|:--:|
+1|1.5|50|[提取码：f490](https://pan.baidu.com/s/16MQNRhdljvrc-Td_oj09CA)|[链接](https://drive.google.com/file/d/1oWS038f2ckRZygXCYVXzWnqU_79Cwu8q/view?usp=sharing)|
+2|2.5|87|[提取码：0id0](https://pan.baidu.com/s/1TbrjrDt0aS-gpmyI9sZ8gg)|[链接](https://drive.google.com/file/d/1aGHneHb9FYjYX1R7qILsKXqeeCjrF7lX/view?usp=sharing)|
+3|2.0|68|[提取码：pair](https://pan.baidu.com/s/1uIGWzsoj8wi631GD-411tg)|[链接](https://drive.google.com/file/d/1-9tpv_7gPNrxjD14PK8q890fXl-Zdy9p/view?usp=sharing)|
 
 </div>
 

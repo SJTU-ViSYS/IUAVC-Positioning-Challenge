@@ -6,3 +6,4 @@ logs/
 *.bag
 __pycache__/
 result/
+ready_publish_result.json

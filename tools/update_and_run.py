@@ -4,9 +4,11 @@ import docker
 import logging
 import subprocess
 import json
+import ResultUpdater
 class DockerUpdater:
-    def __init__(self, image_folder_path, history_image_path,seq:str) -> None:
+    def __init__(self, image_folder_path, history_image_path,seq:str, result_save_path:str) -> None:
         self.seq = seq
+        self.result_save_path = result_save_path
         self.logger = logging.getLogger('./logs/update_log')
         self.InitLogger()
         self.docker_cilent = docker.from_env()
@@ -17,9 +19,11 @@ class DockerUpdater:
                 self.logger.info(f"文件夹 {history_image_path} 创建成功")
             except OSError as e:
                 self.logger.error(f"无法创建文件夹 {history_image_path}: {e}")
+        self.result_updater = ResultUpdater.ResultUpdater(self.logger)
         self.hisoty_image_path = history_image_path
         self.StopAllDockerContainer()
         self.ClearImages()
+        self.result_updater.Update("./result", self.result_save_path)
     def StopAllDockerContainer(self):
         # 获取所有正在运行的容器
         containers = self.docker_cilent.containers.list()
@@ -100,9 +104,10 @@ class DockerUpdater:
                 self.UpdateResultJSON(team,school, str(no))
             self.StopAllDockerContainer()
             self.ClearImages()
+        self.result_updater.Update("./result", self.result_save_path)
 if __name__ == "__main__":
     image_folder_path = "ContestJZDW" 
-    docker_updater = DockerUpdater(image_folder_path,"./ContestJZDW/history","3")
+    docker_updater = DockerUpdater(image_folder_path,"./ContestJZDW/history",seq="1", result_save_path="./")
     while True:
         docker_updater.Update()
         time.sleep(1)

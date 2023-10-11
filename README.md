@@ -100,7 +100,7 @@ seq|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
 说明|百度网盘|谷歌云盘|
 :--:|:--:|:--:|
 飞控IMU-相机内外参结果|[提取码：qmtt](https://pan.baidu.com/s/1g_a2EEymg7jZLqxfTICRnQ)|[链接](https://drive.google.com/drive/folders/1-PBsh7Dq1YBWdkvlD7YUuZhamPmfLDYl?usp=sharing)|
-板载IMU-相机内外参结果|[提取码：16ne](https://pan.baidu.com/s/1ZiQ0PJ-deJ6tmqJnF25qpA)|[链接](https://drive.google.com/drive/folders/1-LQGFShkuSb_ylQiElDkwP_dcOR2egFp?usp=sharing)|
+板载IMU-相机内外参结果|[提取码：gbip](https://pan.baidu.com/s/1Q9HyWzW-HuhAtNEVE_BaZQ)|[链接](https://drive.google.com/drive/folders/1-LQGFShkuSb_ylQiElDkwP_dcOR2egFp?usp=sharing)|
 IMU标定结果|[提取码：2idj](https://pan.baidu.com/s/15T7JDsTVm56YTILaXCuaQw)|[链接](https://drive.google.com/drive/folders/1-Qwb8bZEX9uUjdjo3jjm7Mywo8_JC0fD?usp=sharing)
 内外参标定原始数据|[提取码：4zm1](https://pan.baidu.com/s/1cJj-WcmwjrTcIe4nfuf3Pw)|[链接](https://drive.google.com/drive/folders/1-0DcLUZ4vPFvZcCSN5A6QA4QTSbGLpD3?usp=sharing)|
 </div>

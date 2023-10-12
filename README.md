@@ -76,7 +76,6 @@ seq|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
 <p align="center">Figure 2.  相机分布</p>
 
 >OAK FFC4p相关话题名称如下：
-
 >+  `/oak_ffc/front_left/image`，前视左侧相机，像素：680x400，帧率30hz
 >+  `/oak_ffc/front_right/image`，前视右侧相机，像素：680x400，帧率30hz
 >+  `/oak_ffc/left/image`，侧边左视相机，像素：680x400，帧率30hz
@@ -147,5 +146,6 @@ IMU标定结果|[提取码：2idj](https://pan.baidu.com/s/15T7JDsTVm56YTILaXCua
 `docker image save [镜像：TAG] > test.tar`  
 在主机工作目录下会出现 *test.tar* 文件，该文件即为可提交镜像
 >将 *test.tar*重新命名为 *[school]_[team].tar*，例如*sjtu_visys.tar*  
-### 注意:  
+----
+> **注意**:  
 >+ 服务器会在外部随机分配ip给容器，不能在镜像中的启动文件中提供 *ROS_IP* 和 *ROS_MASTER_URI* 这两个环境变量，否则服务器与容器将无法连接;   

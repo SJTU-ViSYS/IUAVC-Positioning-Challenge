@@ -1,7 +1,7 @@
-#  无人机智能感知技术竞赛-精准定位
+#  无人飞行器智能感知技术竞赛-精准定位
 ## 1. 介绍
 >[无人飞行器智能感知技术竞赛](https://www.robomaster.com/zh-CN/robo/drone?djifrom=nav_drone)以“智在飞翔”为主题，致力于打造智能感知与控制领域具有全球影响力的技术赛事。竞赛遵循“创新、合作、开放、开源”的指导思想，通过开放、开源和建立竞赛联盟等形式，旨在加速推动智能感知、定位导航与自主控制等领域的技术创新，并积极促进相关创新成果在无人飞行器领域开展转化与应用，发现和挖掘一批优质潜力项目和创新人才，为无人智能产业培养更多的未来技术领军人才。<br>
->在无人飞行器智能感知技术竞赛-赛项四-精准定位中，组委会控制一架真实无人机在室内快速飞行，同时录制一段机载相机采集的多目图像以及机载IMU采集的加速度、角速度数据。参赛队伍从Rosbag数据包中读取所需传感器数据，运行状态估计算法，实现无人机状态估计。参赛队伍需利用组委会提供的传感器数据序列，恢复无人机各个时刻相对起飞位置的位姿。组委会将通过对比无人机轨迹真值（通过动捕系统获得）和队伍提交的轨迹，选出精度较高的参赛队伍。
+>在无人飞行器智能感知技术竞赛-精准定位中，组委会控制一架真实无人机在室内快速飞行，同时录制一段机载相机采集的多目图像以及机载IMU采集的加速度、角速度数据。参赛队伍从Rosbag数据包中读取所需传感器数据，运行状态估计算法，实现无人机状态估计。参赛队伍需利用组委会提供的传感器数据序列，恢复无人机各个时刻相对起飞位置的位姿。组委会将通过对比无人机轨迹真值（通过动捕系统获得）和队伍提交的轨迹，选出精度较高的参赛队伍。
 <div align=center>
 <img src="doc/seq3parten.gif"/>
 </div>
@@ -14,8 +14,8 @@
 1.  参赛队将代码封装为docker并上传。组委会在评分时首先启动评分节点和选手提供的roslaunch文件，间隔2s后再播放rosbag；
 2.  在 rosbag 播放后，参赛队根据图像与IMU数据，计算输出当前时刻图像帧的位置姿态。注意，输出位姿的时间戳应和当前时刻图像帧的时间戳保持一致，时间戳与图像时间戳不同的位姿数据将被忽略。
 3.	评分节点将接收选手发送的位姿信息，如果该帧位姿的时间戳满足下列两个条件，将被设置为有效帧，并且记录该帧数据：<br>
-    >+ 所填写的时间戳和当前图像的时间戳一致;<br>
-    >+ 位姿发布的系统时间晚于当前图像帧发布的系统时间，且小于40ms（要求参赛队在收到图像后的40ms内计算并发布位姿）.<br>
+    + 所填写的时间戳和当前图像的时间戳一致;<br>
+    + 位姿发布的系统时间晚于当前图像帧发布的系统时间，且小于40ms（要求参赛队在收到图像后的40ms内计算并发布位姿）.<br>
 4.  在 bag包播放完成之后，评分节点采用记录下来的位姿中前1/3的轨迹与真实轨迹进行对齐；然后将理论真实位姿和对齐后的选手的输出位姿进行对比，通过计算APE的RMSE进行评分：
 $$E_{i,j} = (P_{ref,i}^{-1}P_{est,j})\$$
 $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
@@ -49,11 +49,11 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 ### 4.1 数据下载地址：
 <div align=center>
 
-seq|大小/GB|长度/s|百度网盘|谷歌云盘|阿里云|
-:--:|:--:|:--:|:--:|:--:|:--:|
-1|1.5|50|[提取码：f490](https://pan.baidu.com/s/16MQNRhdljvrc-Td_oj09CA)|[链接](https://drive.google.com/file/d/1oWS038f2ckRZygXCYVXzWnqU_79Cwu8q/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq1.bag)|
-2|2.5|87|[提取码：0id0](https://pan.baidu.com/s/1TbrjrDt0aS-gpmyI9sZ8gg)|[链接](https://drive.google.com/file/d/1aGHneHb9FYjYX1R7qILsKXqeeCjrF7lX/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq2.bag)|
-3|2.0|68|[提取码：pair](https://pan.baidu.com/s/1uIGWzsoj8wi631GD-411tg)|[链接](https://drive.google.com/file/d/1-9tpv_7gPNrxjD14PK8q890fXl-Zdy9p/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq3.bag)|
+seq|大小/GB|长度/s|百度网盘|谷歌云盘|阿里云|OneDrive|
+:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+1|1.5|50|[提取码：f490](https://pan.baidu.com/s/16MQNRhdljvrc-Td_oj09CA)|[链接](https://drive.google.com/file/d/1oWS038f2ckRZygXCYVXzWnqU_79Cwu8q/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq1.bag)|[链接](https://1drv.ms/u/c/262d3fda866ad837/EToPM1HCQFtIhGHZx-Q0DBEBGQ1E5godP-UtSwYcsvoBOA?e=lul5Ud)|
+2|2.5|87|[提取码：0id0](https://pan.baidu.com/s/1TbrjrDt0aS-gpmyI9sZ8gg)|[链接](https://drive.google.com/file/d/1aGHneHb9FYjYX1R7qILsKXqeeCjrF7lX/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq2.bag)|[链接](https://1drv.ms/u/c/262d3fda866ad837/EQj0s7RafktHvTJOoR5RuGcBht98fVwvIqyFzzNDbuqbsw?e=deDBpH)|
+3|2.0|68|[提取码：pair](https://pan.baidu.com/s/1uIGWzsoj8wi631GD-411tg)|[链接](https://drive.google.com/file/d/1-9tpv_7gPNrxjD14PK8q890fXl-Zdy9p/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq3.bag)|[链接](https://1drv.ms/u/s!AiAth4KFbMpGbxdBEj_H5ayLdvw?e=nW4JvQ)|
 
 </div>
 
@@ -150,5 +150,5 @@ IMU标定结果|[提取码：2idj](https://pan.baidu.com/s/15T7JDsTVm56YTILaXCua
 `docker image save [镜像：TAG] > test.tar`  
 在主机工作目录下会出现 *test.tar* 文件，该文件即为可提交镜像
 >将 *test.tar*重新命名为 *[school]_[team].tar*，例如*sjtu_visys.tar*  
-### 注意:  
->+ 服务器会在外部随机分配ip给容器，不能在镜像中的启动文件中提供 *ROS_IP* 和 *ROS_MASTER_URI* 这两个环境变量，否则服务器与容器将无法连接;   
+
+>**注意:** 服务器会在外部随机分配ip给容器，不能在镜像中的启动文件中提供 *ROS_IP* 和 *ROS_MASTER_URI* 这两个环境变量，否则服务器与容器将无法连接;   

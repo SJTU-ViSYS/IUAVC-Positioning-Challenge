@@ -32,7 +32,7 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 >+  若上述条件均无法排出先后，则比较所有有效帧数的平均延时(精确到10us)，平均延时低者排名靠前。
 ## 3. 评分节点编译使用
 > 编译评分节点
->+  pip3 install evo
+>+  `pip3 install evo`
 >+  `cd YOUR_ROS_WORKSPACE/src`
 >+  git clone （待定）
 >+  `cd YOUR_ROS_WORKSPACE`

@@ -34,7 +34,7 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 > 编译评分节点
 >+  `pip3 install evo`
 >+  `cd YOUR_ROS_WORKSPACE/src`
->+  git clone （待定）
+>+  `git clone https://github.com/SJTU-ViSYS/IUAVC-Positioning-Challenge.git`
 >+  `cd YOUR_ROS_WORKSPACE`
 >+  `catkin build`
 ----

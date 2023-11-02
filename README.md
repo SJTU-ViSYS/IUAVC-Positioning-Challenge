@@ -19,7 +19,7 @@
 4.  在 bag包播放完成之后，评分节点采用记录下来的位姿中前1/3的轨迹与真实轨迹进行对齐；然后将理论真实位姿和对齐后的选手的输出位姿进行对比，通过计算APE的RMSE进行评分：
 $$E_{i,j} = (P_{ref,i}^{-1}P_{est,j})\$$
 $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
-5. 	每支参赛队的提交的代码将反复进行5次评分，最终的RMSE成绩为5次评分的最低值；
+5. 	每支参赛队的提交的代码将反复进行3次评分，最终的RMSE成绩为3次评分的最低值；
 6.  如果参赛队的APE的RMSE最低值大于5m，那么该参赛队列为A类排名，否则将被列为B类排名。在B类排名中，根据计算RPE的RMSE对参赛队重新排名：
 $$E_{i,j} = \delta_{est_{i,j}} \ominus \delta_{ref_{i,j}} = (P_{ref,i}^{-1}P_{ref,j})^{-1} (P_{est,i}^{-1}P_{est,j}) \in \mathrm{SE}(3)\$$
 $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
@@ -33,7 +33,7 @@ $$\mathrm{RMSE} = \sqrt{ \frac{1}{N} \sum_{\forall ~i,j} E_{i,j}^2 } \$$
 ## 3. 评分节点编译使用
 > 编译评分节点
 >+  `cd YOUR_ROS_WORKSPACE/src`
->+  git clone （待定）
+>+  git clone https://github.com/SJTU-ViSYS/IUAVC-Positioning-Challenge.git
 >+  `cd YOUR_ROS_WORKSPACE`
 >+  `catkin build`
 ----

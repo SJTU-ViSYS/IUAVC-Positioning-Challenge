@@ -1,7 +1,11 @@
 #  无人机智能感知技术竞赛-精准定位
+## 更新说明
+### 2023.11.10
+1. 补充seq4,seq5数据集及相关标定文件
+2. 补充标定采用标定板参数
 ## 1. 介绍
 >[无人飞行器智能感知技术竞赛](https://www.robomaster.com/zh-CN/robo/drone?djifrom=nav_drone)以“智在飞翔”为主题，致力于打造智能感知与控制领域具有全球影响力的技术赛事。竞赛遵循“创新、合作、开放、开源”的指导思想，通过开放、开源和建立竞赛联盟等形式，旨在加速推动智能感知、定位导航与自主控制等领域的技术创新，并积极促进相关创新成果在无人飞行器领域开展转化与应用，发现和挖掘一批优质潜力项目和创新人才，为无人智能产业培养更多的未来技术领军人才。<br>
->在无人飞行器智能感知技术竞赛-赛项四-精准定位中，组委会控制一架真实无人机在室内快速飞行，同时录制一段机载相机采集的多目图像以及机载IMU采集的加速度、角速度数据。参赛队伍从Rosbag数据包中读取所需传感器数据，运行状态估计算法，实现无人机状态估计。参赛队伍需利用组委会提供的传感器数据序列，恢复无人机各个时刻相对起飞位置的位姿。组委会将通过对比无人机轨迹真值（通过动捕系统获得）和队伍提交的轨迹，选出精度较高的参赛队伍。
+>在无人飞行器智能感知技术竞赛-赛项四-精准定位中，组委会控制一架真实无人机在室内快速飞行，同时录制一段机载相机采集的多目图像以及机载IMU采集的加速度、角速度数据。参赛队伍从Rosbag数据包中读取所需传感器数据，运行状态估计算法，实现无人机状态估计。参赛队伍需利用组委会提供的传感器数据序列，恢复无人机各个时刻相对起飞位置的位姿。组委会将通过对比无人机轨迹真值（通过NOKOV度量动作捕捉系统获得）和队伍提交的轨迹，选出精度较高的参赛队伍。
 <div align=center>
 <img src="doc/seq3parten.gif"/>
 </div>
@@ -53,18 +57,22 @@ seq|大小/GB|长度/s|百度网盘|谷歌云盘|阿里云|OneDrive|
 1|1.5|50|[提取码：f490](https://pan.baidu.com/s/11CzXYJe3n2UcsVX1WTAwrQ)|[链接](https://drive.google.com/file/d/1oWS038f2ckRZygXCYVXzWnqU_79Cwu8q/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq1.bag)|[链接](https://1drv.ms/u/c/262d3fda866ad837/EToPM1HCQFtIhGHZx-Q0DBEBGQ1E5godP-UtSwYcsvoBOA?e=lul5Ud)|
 2|2.5|87|[提取码：0id0](https://pan.baidu.com/s/10Cl8UovaVWzty_yeY1HsXQ )|[链接](https://drive.google.com/file/d/1aGHneHb9FYjYX1R7qILsKXqeeCjrF7lX/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq2.bag)|[链接](https://1drv.ms/u/c/262d3fda866ad837/EQj0s7RafktHvTJOoR5RuGcBht98fVwvIqyFzzNDbuqbsw?e=deDBpH)|
 3|2.0|68|[提取码：pair](https://pan.baidu.com/s/1BIjTSsVbkyOjF32nMIa9bA)|[链接](https://drive.google.com/file/d/1-9tpv_7gPNrxjD14PK8q890fXl-Zdy9p/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq3.bag)|[链接](https://1drv.ms/u/s!AiAth4KFbMpGbxdBEj_H5ayLdvw?e=nW4JvQ)|
-
+4|3.3|113|[提取码: p4b7](https://pan.baidu.com/s/1sCkw8fSqSxbjRTPTK5hQsg)|[链接](https://drive.google.com/file/d/1ow-zxWKAncqLa8a3V2qSc0KcsetRRJQP/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq4.bag)|[链接](https://1drv.ms/u/s!Ah9DOgIcNf5sbzTTpDgMlV7x0jw?e=cc7adx)
+5|2.7|98|[提取码: pu1u](https://pan.baidu.com/s/1BMsPTtRSNfa9j9UbnzEfjg)|[链接](https://drive.google.com/file/d/1xi4O8bt1hBaBO2UWRcxdob7vTRGzjxZU/view?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/datasets/IntelligentUAV2023_seq5.bag)|[链接](https://1drv.ms/u/s!Ah9DOgIcNf5sbsxQ2R2rphBqUwY?e=sOYrta)
 </div>
 
 ### 4.2 数据说明
->用于测试的数据包含3个sequence，三个数据集的特点如下：
+>用于测试的数据包含5个sequence，用于最终比赛测评所用包含1个sequence，所有的6个sequence的特点如下：
 <div align="center">
 
-seq|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
-:--:|:--:|:--:|:--:|:--:|:--:|
-1|慢|包含|不包含|不包含|包含|
-2|慢|包含|不包含|不包含|包含|
-3|较快|包含|包含|不包含|包含|
+seq|速度|快速转向|场景明暗变化|黑暗片段|动态物体|启动状态|
+:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+1|慢|包含|不包含|不包含|包含|静态|
+2|慢|包含|包含，对比较弱|不包含|包含|静态|
+3|较快|包含|包含，对比较弱|不包含|包含|静态|
+4|快|包含|包含，对比强烈|包含，时间较长|包含|静态|
+5|较快|包含|包含，对比强烈|包含，时间较短|包含|动态|
+测评|较快|包含|包含，对比强烈|包含，时间较短|包含|静态
 </div>
 
 ## 5. 传感器
@@ -86,16 +94,18 @@ seq|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
 >数据集中包含了飞控IMU信息，帧率230hz，话题名称为`/mavros/imu/data`
 
 ## 6. 参考真值
->参考真值由动作捕捉系统捕获得到，以`/motion_capture/odom`的ros话题形式存储在bag数据集中（正式比赛的bag包不包含该话题）。同时，参考真值也以tum格式存储在*ground_truth* 目录下。
+>参考真值由[NOKOV度量动作捕捉系统](https://www.nokov.com/)捕获得到，以`/motion_capture/odom`的ros话题形式存储在bag数据集中（正式比赛的bag包不包含该话题）。同时，参考真值也以tum格式存储在*ground_truth* 目录下。
 
 ## 7. 输出话题
 >+  参赛队的估计结果要以话题名为 `/player/odom` 的形式实时发送出来，`/player/odom` 的类型为*nav_msgs::Odometry*；
 >+ **注意**：请在发布话题时，要手动填写header中的时间戳，评分节点只会记录和 `/oak_ffc/front_left/image` 时间戳一致的`/player/odom`信息: <br>
 
 ## 8. 标定文件
->组委会提供了标定结果，以及标定所用的原始rosbag。
-
+> 组委会采用[allan_variance_ros](https://github.com/ori-drs/allan_variance_ros)标定了imu噪声，采用[kalibr](https://github.com/ethz-asl/kalibr)标定了相机内外参数，标定结果以及标定所用的原始rosbag下载地址可见下方表格。<br>
+***注意***：由于测试集分两次采集，由于各种因素影响，两次采集时相机内外参数不尽相同，进行测试时，请选用当次发布对应的标定结果。最终比赛测评所用的数据集和seq4,seq5同日采集，标定结果与seq4,seq5相同。
+标定板参数: [doc/april_6x6.yaml](doc/april_6x6.yaml)
 <div align="center">
+seq1~seq3标定结果及原始数据
 
 说明|百度网盘|谷歌云盘|阿里云|
 :--:|:--:|:--:|:--:|
@@ -104,7 +114,16 @@ seq|速度|快速转向|场景明暗变化|黑暗片段|动态物体|
 IMU标定结果|[提取码：2idj](https://pan.baidu.com/s/15T7JDsTVm56YTILaXCuaQw)|[链接](https://drive.google.com/drive/folders/1-Qwb8bZEX9uUjdjo3jjm7Mywo8_JC0fD?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/cali_data/imu_cali.zip)|
 内外参标定原始数据|[提取码：4zm1](https://pan.baidu.com/s/1cJj-WcmwjrTcIe4nfuf3Pw)|[链接](https://drive.google.com/drive/folders/1-0DcLUZ4vPFvZcCSN5A6QA4QTSbGLpD3?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/cali_data/orin_data.zip)|
 </div>
+<div align="center">
+seq4~seq5，测评数据集标定结果及原始数据
 
+说明|百度网盘|谷歌云盘|阿里云|
+:--:|:--:|:--:|:--:|
+飞控IMU-相机内外参结果|[提取码：eomr](https://pan.baidu.com/s/1SFskSboSrlBAfl62oGFNAw)|[链接](https://drive.google.com/drive/folders/1PMR27TdqZ6puwBjKl__SL69ATp7klJ5R?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/cali_data/mavros_imu.zip)|
+板载IMU-相机内外参结果|[提取码：9vuh](https://pan.baidu.com/s/1gNzeODTRsw-FZavpoGLR0A)|[链接](https://drive.google.com/drive/folders/1vXUw5945a8ODVaWkLi7StvRhwhTORFK3?usp=sharing)| [链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/cali_data/oak_imu.zip)|
+IMU标定结果|[提取码：ossr](https://pan.baidu.com/s/1b7Uhd48KAntnN5jjTWi5MA)|[链接](https://drive.google.com/drive/folders/1g3wrlavDnBJpM2a5Ca33QLNqa2i6MZX2?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/cali_data/imu_cali.zip)|
+内外参标定原始数据|[提取码：yo7w](https://pan.baidu.com/s/17pNz33gm_oWDaXptHMZ6zw)|[链接](https://drive.google.com/drive/folders/13U1RNyoD8UgfixhSDU-sT8JXFMDsyWLO?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/cali_data/orin_data.zip)|
+</div>
 
 ## 9. 提交
 

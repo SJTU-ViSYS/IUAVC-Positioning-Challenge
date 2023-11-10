@@ -104,8 +104,11 @@ seq|速度|快速转向|场景明暗变化|黑暗片段|动态物体|启动状�
 > 组委会采用[allan_variance_ros](https://github.com/ori-drs/allan_variance_ros)标定了imu噪声，采用[kalibr](https://github.com/ethz-asl/kalibr)标定了相机内外参数，标定结果以及标定所用的原始rosbag下载地址可见下方表格。<br>
 ***注意***：由于测试集分两次采集，由于各种因素影响，两次采集时相机内外参数不尽相同，进行测试时，请选用当次发布对应的标定结果。最终比赛测评所用的数据集和seq4,seq5同日采集，标定结果与seq4,seq5相同。
 标定板参数: [doc/april_6x6.yaml](doc/april_6x6.yaml)
+
+---
 <div align="center">
-seq1~seq3标定结果及原始数据
+
+#### seq1~seq3标定结果及原始数据
 
 说明|百度网盘|谷歌云盘|阿里云|
 :--:|:--:|:--:|:--:|
@@ -114,8 +117,11 @@ seq1~seq3标定结果及原始数据
 IMU标定结果|[提取码：2idj](https://pan.baidu.com/s/15T7JDsTVm56YTILaXCuaQw)|[链接](https://drive.google.com/drive/folders/1-Qwb8bZEX9uUjdjo3jjm7Mywo8_JC0fD?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/cali_data/imu_cali_new.zip)|
 内外参标定原始数据|[提取码：4zm1](https://pan.baidu.com/s/1cJj-WcmwjrTcIe4nfuf3Pw)|[链接](https://drive.google.com/drive/folders/1-0DcLUZ4vPFvZcCSN5A6QA4QTSbGLpD3?usp=sharing)|[链接](https://intelligentuav2023.oss-cn-hangzhou.aliyuncs.com/cali_data/origin_new.zip)|
 </div>
+
+--- 
 <div align="center">
-seq4~seq5，测评数据集标定结果及原始数据
+
+#### seq4~seq5，测评数据集标定结果及原始数据
 
 说明|百度网盘|谷歌云盘|阿里云|
 :--:|:--:|:--:|:--:|

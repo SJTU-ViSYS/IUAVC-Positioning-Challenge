@@ -164,9 +164,10 @@ IMU标定结果|[提取码：ossr](https://pan.baidu.com/s/1b7Uhd48KAntnN5jjTWi5
 `docker commit 694861df819c myimages:v0.1`
 ----
 > 在主机中测试镜像
+>+ 启动评分节点
 >+ 将如下指令中的 [镜像：TAG] 换成自己的对应名称即可启动测试  
 `docker run --rm -i -t -e ROS_IP='172.17.0.2' -e ROS_MASTER_URI='http://172.17.0.1:11311'  [镜像：TAG]`
->+ 启动评分节点
+
 ----
 >当容器启动后，评分节点运作正常时，一个完整的可提交的镜像制作完成,导出镜像即可   
 `docker image save [镜像：TAG] > test.tar`  

@@ -141,7 +141,8 @@ IMU标定结果|[提取码：ossr](https://pan.baidu.com/s/1b7Uhd48KAntnN5jjTWi5
 ----
 > 将程序封装入镜像中
 >+ 使用如下指令打开一个容器，*-v* 指令会将主机中的 *workspace*  文件夹挂载到容器中的 */home/tmp* 中，使得容器可以访问主机文件夹的文件  
- `docker run -it -v /path/to/workspace/:/home/tmp   student_basic_dev_0825`  
+ `docker run -it -v /path/to/workspace/:/home/tmp stage1_pdcontrol`
+>+ 按键Ctrl+C结束掉当前程序
 >+ 在容器终端中进入 ***/home*** 目录  
 `cd /home`  
 >+ 在容器终端中用 ***/home/tmp*** 中的src文件夹覆盖 ***/home/student_basic_dev*** 的src文件夹  
